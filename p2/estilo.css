@@ -167,6 +167,63 @@ figcaption {
  font-size: 10px;
 }
 
+.seccion_comentarios {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.boton_comentario {
+  position: fixed;
+  bottom: 0%;
+  background-color:#318af2;
+  border-radius:3px;
+  border:1px solid #31b1f2;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:17px;
+  padding: 5px 10px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #3164f2;
+  transition-duration: 0.3s;
+}
+.boton_comentario:hover {
+  background-color:#3164f2;
+}
+
+.desplegable {
+  display: none;
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 5%;
+  padding: 3% 5%;
+  border-radius: 2%;
+  opacity: 0.9;
+  justify-content: center;
+  
+}
+.info_usr {
+  text-align:center;
+  margin:auto;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.comentario {
+  padding: 0% 2%;
+  margin: 3% 0%;
+  border:1px solid #379683;
+  border-radius: 3%;
+}
+
 
 /* Para los botones sociales */
 .fa {
@@ -244,12 +301,23 @@ figcaption {
 }
 
 /* para que se "apilen" la cabecera, los elementos auxiliares y el pie */
-@media all and (max-width: 500px) {
+@media all and (max-width: 600px) {
   
-  .titulo, section {
+  .titulo, section, .seccion_comentarios {
     text-align: center;
     -webkit-flex-direction: column;
     flex-direction: column;
+  }
+
+  .boton_comentario {
+   align-self: center;
+   position: relative;
+   width: 33%;
+  }
+
+  .form_comentario {
+    align-self: center;
+    position: relative;
   }
 
 }

@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="estilo.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="scripts.js"></script>
 <title>Evento</title>
 </head>
 <body class="cuerpo">
@@ -109,8 +110,33 @@
                 </div>
             </div>
 
+            <div class="seccion_comentarios">
+                <div class = "desplegable" id="desplegable" style="display: none;">
+                    <div class="comentario">
+                        <p>Autor, 10/09/2020 a las 18:09</p>
+                        <p>Cuándo salen las entradas a la venta?</p>
+                    </div>
+
+                    <div class="comentario">
+                        <p>Autor, 10/09/2020 a las 18:09</p>
+                        <p>Cuándo salen las entradas a la venta?</p>
+                    </div>
+
+                    <div class="comentario" id="com1"></div>
+
+
+                    <form name="form_comentario" id="caja_comentarios" onsubmit="validateForm();" method="post">
+                            <div class="info_usr">Nombre:<input type="text" name="nombre" required/></div>
+                            <div class="info_usr">E-mail:<input type="text" name="email" required/></div>
+                            <div class="info_usr">Tu comentario:
+                                <textarea name="message" class="info_usr" id="com">Introduce aquí tu comentario...</textarea>
+                            </div>
+                            <div class="info_usr"><input type="submit" /></div>
+                    </form>
+                </div>
+                <button class="boton_comentario" onclick="mostrarComentarios()">Comentarios</button>
+            </div>
         </article>
-        
     </section>
 
     <footer>
