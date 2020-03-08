@@ -1,3 +1,4 @@
+var PROHIBIDAS = ["PERA", "MANZANA", "NARANJA", "SANDIA", "MELON", "MANDARINA", "FRESA", "MANGO"];
 function mostrarComentarios() 
 {
   var x = document.getElementById("desplegable");
@@ -15,7 +16,7 @@ function getFecha()
     var mm = hoy.getMonth()+1; // Enero es 0
     var yyyy = hoy.getFullYear();
     if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm}
-    hoy = dd+""+mm+""+yyyy;
+    hoy = dd+"/"+mm+"/"+yyyy;
 
     return hoy;
 }
@@ -31,15 +32,80 @@ function getHora()
 
 function validateForm() {
 
-  // obtener el valor de los campos del comentario: nombre y email
+  // obtener el valor de los campos del comentario
   var nombre = document.forms["form_comentario"]["nombre"].value;
   var email = document.forms["form_comentario"]["email"].value;
   var com = document.getElementById("com").value;
-  alert ("<p>" + nombre + ", " + getFecha() + " a las " + getHora() + "</p><p>" + com + "</p>")
-  aniadeComentario(nombre,com);
+  if (nombre == ""){
+    alert ("El nombre no puede estar vacío");
+    return false;
+  } 
+
+  else if (email == ""){
+    alert ("El email no puede estar vacío");
+    return false;
+  }
+
+  else if (!validaEmail(email)) {
+    alert("Dirección de email no válida");
+    return false;
+  }
+
+  else if (com == "" || com == "Introduce aquí tu comentario...") {
+    alert("El comentario no puede estar vacío")
+    return false;
+  }
+  
+  aniadeComentario(nombre,email,com);
+
+  document.forms["form_comentario"]["nombre"].value = "";
+  document.forms["form_comentario"]["email"].value = "";
+  document.getElementById("com").value = "";
+  return false;
 }
 
-function aniadeComentario(nombre,com) 
+function aniadeComentario(nombre,email,com)
 {
-  document.getElementById("com1").innerHTML = "<p>" + nombre + ", " + getFecha() + " a las " + getHora() + "</p><p>" + com + "</p>";
+  let div = document.createElement('div');
+  div.className = "comentario";
+  div.innerHTML = "<p class=\"autor_fecha_hora\">" + nombre + ", el " + getFecha() + " a las " + getHora() + "</p><p>" + com + "</p>";
+  comentarios.append(div);
+}
+
+
+function validaEmail (em)
+{
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(em)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+function compruebaProhibidas () {
+  
+  var com = document.getElementById("com").value;
+  var palabras = com.split(" ");
+  let i = 0;
+  var el_prohibida = -1; 
+  while ( el_prohibida == -1 && i < palabras.length ){
+    el_prohibida = PROHIBIDAS.indexOf(palabras[i].toUpperCase());
+    console.log("analizo: "+ palabras[i].toUpperCase() + " la busco en " + PROHIBIDAS);
+    i++;
+  }
+    
+
+    if (el_prohibida != -1){
+      let a_borrar = PROHIBIDAS[el_prohibida];
+      let reg = new RegExp(a_borrar, 'gi');
+      let asteriscos = ""
+      let i;
+      for (i = 0; i < (reg.toString()).length-4; i++) {
+        asteriscos = asteriscos + "*"
+      }
+      alert (reg + ", " + asteriscos);
+      document.getElementById("com").value =  com.replace(reg, asteriscos);
+    }
+
 }

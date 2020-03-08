@@ -193,7 +193,8 @@ figcaption {
 }
 
 .desplegable {
-  display: none;
+  overflow: auto;
+  height: 62%;
   background-color: #ffffff;
   position: fixed;
   bottom: 5%;
@@ -205,7 +206,7 @@ figcaption {
 }
 .info_usr {
   text-align:center;
-  margin:auto;
+  margin:5px 0;
 }
 
 input[type=text], select, textarea {
@@ -224,7 +225,9 @@ input[type=text], select, textarea {
   border-radius: 3%;
 }
 
-
+.autor_fecha_hora {
+  font-weight: bold;
+}
 /* Para los botones sociales */
 .fa {
   padding: 20px;

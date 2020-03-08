@@ -112,26 +112,25 @@
 
             <div class="seccion_comentarios">
                 <div class = "desplegable" id="desplegable" style="display: none;">
-                    <div class="comentario">
-                        <p>Autor, 10/09/2020 a las 18:09</p>
-                        <p>Cuándo salen las entradas a la venta?</p>
+                    <div id = "comentarios">
+                        <div class="comentario">
+                            <p class="autor_fecha_hora">Autor1, 10/09/2020 a las 18:09</p>
+                            <p>Cuándo salen las entradas a la venta?</p>
+                        </div>
+
+                        <div class="comentario">
+                            <p class="autor_fecha_hora">Autor2, 10/09/2020 a las 18:09</p>
+                            <p>Tengo muchas ganas</p>
+                        </div>
                     </div>
 
-                    <div class="comentario">
-                        <p>Autor, 10/09/2020 a las 18:09</p>
-                        <p>Cuándo salen las entradas a la venta?</p>
-                    </div>
-
-                    <div class="comentario" id="com1"></div>
-
-
-                    <form name="form_comentario" id="caja_comentarios" onsubmit="validateForm();" method="post">
-                            <div class="info_usr">Nombre:<input type="text" name="nombre" required/></div>
-                            <div class="info_usr">E-mail:<input type="text" name="email" required/></div>
+                    <form name="form_comentario" id="caja_comentarios">
+                            <div class="info_usr">Nombre:<input type="text" name="nombre" /></div>
+                            <div class="info_usr">E-mail:<input type="text" name="email" /></div>
                             <div class="info_usr">Tu comentario:
-                                <textarea name="message" class="info_usr" id="com">Introduce aquí tu comentario...</textarea>
+                                <textarea name="message" class="info_usr" id="com"  onkeyup="compruebaProhibidas()">Introduce aquí tu comentario...</textarea>
                             </div>
-                            <div class="info_usr"><input type="submit" /></div>
+                            <div class="info_usr"><button onclick="return validateForm();">Enviar</button></div>
                     </form>
                 </div>
                 <button class="boton_comentario" onclick="mostrarComentarios()">Comentarios</button>
