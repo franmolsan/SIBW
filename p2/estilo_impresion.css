@@ -1,0 +1,199 @@
+/*****************************************************************************/
+/* Francisco José Molina Sánchez                                             */
+/* P1, SIBW                                                                  */
+/* 2019-2020                                                                 */
+/*****************************************************************************/
+
+/*****************************************************************************/
+/* Cuerpo: afecta a todo el documento                                        */
+/*****************************************************************************/
+.cuerpo {
+    /* eliminar los espacios "por defecto" que hay alrededor */
+    margin: 0;
+    text-align: center;
+    color: black;
+    font-family: "Times New Roman", Times, serif;
+    /* tamaño de letra general */
+    font-size: 20px; 
+  }
+  
+  /* Tamaño del titulo */
+  h1 {
+    font-size: 45px;
+  }
+  
+  /* Estilo para el header */
+  header {
+    padding: 30px;
+    color:black;
+  }
+
+  /* Flexbox para el logo y el titulo */
+  .titulo {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2%;
+  }
+  
+  
+  /* Centrar el titulo de la pagina */
+  .t1 {
+    margin: auto;
+    padding-bottom: 10px;
+  }
+  
+  /* Posicion del logo */
+  .logo { 
+    justify-content: left;
+    align-self: start;
+  }
+  
+  /* Contenedor para las flexboxes */
+  .flex-container {
+      display: -webkit-flex;
+      display: flex;
+  }
+  
+  .enlaces{
+    justify-content: center;
+  }
+  
+  /* Estilo de la barra de navegación */
+  nav {
+      visibility: hidden;
+      position: absolute;
+  }
+
+  
+  /* Estilo para los enlaces */
+  .enlace {
+    color:black;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 10px;
+  }
+  
+  
+  /* Estilo para el articulo (en evento y evento_imprimir)  */
+  article {
+    padding: 20px;
+    margin: 0 10%;
+  }
+
+  .texto {
+    color: black;
+    
+  }
+    
+  /* Estilo del pie */
+  footer {
+    padding: 10px;
+    text-align: center;
+    color: white;
+  }
+  
+  /* Formato de los enlaces */
+  a {
+    /* para eliminar el subrayado de los enlaces */
+    text-decoration: none;
+    color:black;
+  }
+    
+  a:hover, a:active {
+    color: #8EE4AF;
+  }
+  
+  /* Flexbox para las imágenes */
+  
+  .fila {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 4px;
+    justify-content: center;
+    background-color: white;
+    color: black;
+  }
+  
+  /* Crear columnas de imagenes */
+  
+  /* Para evento_imprimir (igual que en evento)*/
+  .mitad {
+    flex: 33%;
+    max-width: 33%;
+    padding: 0 4px;
+  }
+  
+  .mitad img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+  }
+  
+  /* Texto de las imágenes */
+  figcaption {
+    color: black;
+    text-align: center;
+  }
+  
+  /* Crédito de las imágenes */
+  .credito {
+   font-size: 10px;
+  }
+  
+  
+  /* Para los botones sociales */
+  .fa {
+    visibility: hidden;
+    position: absolute;
+  }
+  
+  
+  /*****************************************************************************/
+  /* Para que el layout sea responsive                                         */
+  /*****************************************************************************/
+  
+  /* para que el grid de imágenes se vaya reduciendo */
+  @media all and (max-width: 1100px) {
+  
+    .col {
+      -webkit-flex-direction: column;
+      flex-direction: column;
+      flex: 33%;
+      max-width: 33%;
+    }
+  }
+  
+  /* para que el grid de imágenes se vaya reduciendo */
+  @media all and (max-width: 950px) {
+  
+    .col {
+      -webkit-flex-direction: column;
+      flex-direction: column;
+      flex: 50%;
+      max-width: 50%;
+    }
+  }
+  
+  /* para que el grid de imágenes se vaya reduciendo */
+  @media all and (max-width: 700px) {
+  
+    .col, .mitad {
+      -webkit-flex-direction: column;
+      flex-direction: column;
+      -ms-flex: 100%;
+      flex: 100%;
+      max-width: 100%;
+    }
+  }
+  
+  /* para que se "apilen" la cabecera, los elementos auxiliares y el pie */
+  @media all and (max-width: 500px) {
+    
+    .titulo, section {
+      -webkit-flex-direction: column;
+      flex-direction: column;
+    }
+  
+  }
+  
