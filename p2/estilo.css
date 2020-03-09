@@ -225,8 +225,13 @@ input[type=text], select, textarea {
   border-radius: 3%;
 }
 
-.autor_fecha_hora {
+.autor {
   font-weight: bold;
+}
+
+.fecha_hora {
+  font-style: italic;
+  font-size: 15px;
 }
 /* Para los botones sociales */
 .fa {
@@ -294,7 +299,7 @@ input[type=text], select, textarea {
 /* para que el grid de imágenes se vaya reduciendo */
 @media all and (max-width: 700px) {
 
-  .col, .mitad {
+  .col, .mitad , .seccion_comentarios{
     -webkit-flex-direction: column;
     flex-direction: column;
     -ms-flex: 100%;
@@ -306,6 +311,12 @@ input[type=text], select, textarea {
     align-self: center;
     position: relative;
   }
+
+  .boton_comentario {
+    align-self: center;
+    position: relative;
+    width: 120px;
+   }
 }
 
 /* para que se "apilen" la cabecera, los elementos auxiliares y el pie */
@@ -315,12 +326,6 @@ input[type=text], select, textarea {
     text-align: center;
     -webkit-flex-direction: column;
     flex-direction: column;
-  }
-
-  .boton_comentario {
-   align-self: center;
-   position: relative;
-   width: 33%;
   }
 
 }
