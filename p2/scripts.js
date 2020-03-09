@@ -51,7 +51,7 @@ function validateForm() {
     return false;
   }
 
-  else if (com == "" || com == "Introduce aquí tu comentario...") {
+  else if ( /^\s*$/.test(com) || com == "Introduce aquí tu comentario...") {
     alert("El comentario no puede estar vacío")
     return false;
   }
@@ -86,7 +86,10 @@ function validaEmail (em)
 function compruebaProhibidas () {
   
   var com = document.getElementById("com").value;
-  var palabras = com.split(" ");
+  // dividir las palabras por espacios, saltos de linea, etc.
+  var palabras = com.split(/(\s+)/);
+
+  // comprobar si hay alguna palabra prohibida
   let i = 0;
   var el_prohibida = -1; 
   while ( el_prohibida == -1 && i < palabras.length ){
@@ -96,16 +99,20 @@ function compruebaProhibidas () {
   }
     
 
-    if (el_prohibida != -1){
-      let a_borrar = PROHIBIDAS[el_prohibida];
-      let reg = new RegExp(a_borrar, 'gi');
-      let asteriscos = ""
-      let i;
-      for (i = 0; i < (reg.toString()).length-4; i++) {
-        asteriscos = asteriscos + "*"
-      }
-      alert (reg + ", " + asteriscos);
-      document.getElementById("com").value =  com.replace(reg, asteriscos);
+  // si la hay, formar una cadena de asteriscos del mismo tamaño 
+  if (el_prohibida != -1){
+    let a_borrar = PROHIBIDAS[el_prohibida];
+    let reg = new RegExp(a_borrar, 'gi');
+    let asteriscos = ""
+    let i;
+
+    // la forma de la expresion regular es "\RegEx\gi", y nos interesa la 
+    // longitud de la cadena RegEx (de ahí que lleguemos hasta lenght - 4 )
+    for (i = 0; i < (reg.toString()).length-4; i++) {
+      asteriscos = asteriscos + "*"
     }
+    alert (reg + ", " + asteriscos);
+    document.getElementById("com").value =  com.replace(reg, asteriscos);
+  }
 
 }

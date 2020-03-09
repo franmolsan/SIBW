@@ -1,6 +1,6 @@
 /*****************************************************************************/
 /* Francisco José Molina Sánchez                                             */
-/* P1, SIBW                                                                  */
+/* P2, SIBW                                                                  */
 /* 2019-2020                                                                 */
 /*****************************************************************************/
 
@@ -301,6 +301,11 @@ input[type=text], select, textarea {
     flex: 100%;
     max-width: 100%;
   }
+
+  .desplegable {
+    align-self: center;
+    position: relative;
+  }
 }
 
 /* para que se "apilen" la cabecera, los elementos auxiliares y el pie */
@@ -316,11 +321,6 @@ input[type=text], select, textarea {
    align-self: center;
    position: relative;
    width: 33%;
-  }
-
-  .form_comentario {
-    align-self: center;
-    position: relative;
   }
 
 }
