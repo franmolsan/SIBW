@@ -1,12 +1,12 @@
-var PROHIBIDAS = ["PERA", "MANZANA", "NARANJA", "SANDIA", "MELON", "MANDARINA", "FRESA", "MANGO"];
-var ASTERISCOS = ["****", "*******", "*******", "******", "*****", "*********", "*****", "*****"];
+const PROHIBIDAS = ["PERA", "MANZANA", "NARANJA", "SANDIA", "MELON", "MANDARINA", "FRESA", "MANGO"];
+const ASTERISCOS = ["****", "*******", "*******", "******", "*****", "*********", "*****", "*****"];
 function mostrarComentarios() 
 {
   var x = document.getElementById("desplegable");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
+  if (x.style.display === "block") {
     x.style.display = "none";
+  } else {
+    x.style.display = "block";
   }
 }
 
@@ -27,6 +27,7 @@ function getHora()
  var hoy = new Date();
  var horas = hoy.getHours();
  var minutos = hoy.getMinutes();
+ if(horas<10){horas='0'+horas} if(minutos<10){minutos='0'+minutos}
 
  return (horas+":"+minutos);
 }
@@ -52,7 +53,7 @@ function validateForm() {
     return false;
   }
 
-  else if ( /^\s*$/.test(com) || com == "Introduce aquí tu comentario...") {
+  else if ( /^\s*$/.test(com)) {
     alert("El comentario no puede estar vacío")
     return false;
   }
@@ -69,7 +70,7 @@ function aniadeComentario(nombre,email,com)
 {
   let div = document.createElement('div');
   div.className = "comentario";
-  div.innerHTML = "<p class=\"autor_fecha_hora\">" + nombre + ", el " + getFecha() + " a las " + getHora() + "</p><p>" + com + "</p>";
+  div.innerHTML = "<p class=\"autor\">" + nombre + ", <span class=\"fecha_hora\">" + getFecha() + " a las " + getHora() + "</span></p><p>" + com + "</p>";
   comentarios.append(div);
 }
 
@@ -84,26 +85,16 @@ function validaEmail (em)
   }
 }
 
-function compruebaProhibidas () {
+function compruebaProhibidas() {
   
-  var com = document.getElementById("com").value;
-  // dividir las palabras por espacios, saltos de linea, etc.
-  var palabras = com.split(/(\s+)/);
+  var com = document.getElementById("com");
 
-  // comprobar si hay alguna palabra prohibida
-  let i = 0;
-  var el_prohibida = -1; 
-  while ( el_prohibida == -1 && i < palabras.length ){
-    el_prohibida = PROHIBIDAS.indexOf(palabras[i].toUpperCase());
-    console.log("analizo: "+ palabras[i].toUpperCase() + " la busco en " + PROHIBIDAS);
-    i++;
-  }
-    
-  // si la hay, formar una cadena de asteriscos del mismo tamaño 
-  if (el_prohibida != -1){
-    let a_borrar = PROHIBIDAS[el_prohibida];
-    let reg = new RegExp(a_borrar, 'gi');
-    document.getElementById("com").value =  com.replace(reg, ASTERISCOS[el_prohibida]);
+  var i;
+  for (i=0; i<PROHIBIDAS.length; i++){
+    // usamos la expresión regular porque con la opción "gi" 
+    // nos permite ignorar las mayúsculas o minúsculas.
+    var reg = new RegExp (PROHIBIDAS[i], 'gi');
+    com.value = com.value.replace(reg, ASTERISCOS[i]);  
   }
 
 }

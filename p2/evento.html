@@ -111,7 +111,7 @@
             </div>
 
             <div class="seccion_comentarios">
-                <div class = "desplegable" id="desplegable" style="display: none;">
+                <div class = "desplegable" id="desplegable">
                     <div id = "comentarios">
                         <div class="comentario">
                             <p class="autor">Autor1, <span class="fecha_hora">06/03/2020 a las 20:56</span></p>
@@ -124,14 +124,17 @@
                         </div>
                     </div>
 
-                    <form name="form_comentario" id="caja_comentarios">
-                            <div class="info_usr">Nombre:<input type="text" name="nombre" /></div>
-                            <div class="info_usr">E-mail:<input type="text" name="email" /></div>
-                            <div class="info_usr">Tu comentario:
-                                <textarea name="message" class="info_usr" id="com"  onkeyup="compruebaProhibidas()">Introduce aquí tu comentario...</textarea>
-                            </div>
-                            <div class="info_usr"><button onclick="return validateForm();">Enviar</button></div>
-                    </form>
+                    <div class="formulario_comentario">
+                        <p class="info_usr">Deja aquí tu comentario</p>
+                        <form name="form_comentario" id="caja_comentarios">
+                                <div class="info_usr">Nombre:<input type="text" name="nombre" /></div>
+                                <div class="info_usr">E-mail:<input type="text" name="email" /></div>
+                                <div class="info_usr">Tu comentario:
+                                    <textarea name="message" class="info_usr" id="com"  oninput="compruebaProhibidas()" placeholder="Escribe tu comentario..."></textarea>
+                                </div>
+                                <div class="info_usr"><button class="boton_enviar" onclick="return validateForm();">Enviar</button></div>
+                        </form>
+                    </div>
                 </div>
                 <button class="boton_comentario" onclick="mostrarComentarios()">Comentarios</button>
             </div>
