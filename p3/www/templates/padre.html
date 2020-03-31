@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <link rel="stylesheet" type="text/css" href="/styles/estilo.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/scripts/scripts.js"></script>
+<title>SIBW {% block titulo %}{% endblock %}</title>
+</head>
+<body class="cuerpo">
+
+<header>
+
+    <div class="titulo">
+        <a href="/"><img class="logo" src="/img/logo.png" alt="Logo"/></a>
+        <h1 class="t1"><a href="/">Conciertos Granada</a></h1>
+    </div>
+
+    <section class="flex-container enlaces"> 
+        <div class="enlace"> 
+            <a href="#">Menu1</a>
+        </div>
+        <div class="enlace">
+            <a href="#">Menu2</a>
+        </div>
+        <div class="enlace">
+            <a href="#">Menu3</a>
+        </div>
+    </section>
+</header>
+
+<section class="flex-container">
+    
+    <nav class="enlaces">
+        <ul class="enlace">
+            <li><a href="#">Próximos conciertos</a></li>
+            <li><a href="#">Buscar concierto</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Grupos</a></li>
+            <li><a href="#">Festivales</a></li>
+            <li><a href="#">Calendario</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        {% block central %}
+        <p> parte central </p>
+        {% endblock %}
+    </main>
+</section>
+
+<footer>
+
+    <section class="flex-container enlaces"> 
+        <div class="enlace"> 
+            <a href="#">About us</a>
+        </div>
+        <div class="enlace">
+            <a href="#">Contact</a>
+        </div>
+        <div class="enlace">
+            &copy; fjms
+        </div>
+    </section>
+
+</footer>
+
+
+</body>
+</html> 

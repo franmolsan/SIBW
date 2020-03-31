@@ -1,0 +1,77 @@
+{% extends "padre.html" %}
+
+{% block titulo %}
+    Página Evento
+{% endblock %}
+
+{% block central %}
+    <article>
+        <div class="titulo">
+            <div>
+                <h2>{{ evento['nombre'] }}</h2>
+                <h3><a href="https://www.google.com/maps/search/?api=1&query={{ evento['lugar'] }}">{{ evento['lugar'] }}</a></h3>
+                <h4>{{ evento['fecha'] }}</h4>
+                <h4>{{ evento['hora'] }}</h4>
+                <h4>Precio de la entrada: {{ evento['precio'] }} €</h4>
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-youtube"></a>
+                <a href="evento_imprimir.html" class="fa fa-print"></a>
+            </div> 
+        </div>
+        
+        <div class="texto">
+            <p>
+                {{ evento['texto'] }}
+            </p>
+        </div>
+        <div class= "fila">
+            <div class="mitad"> 
+                <figure>
+                    <img src="{{ imagenes[0].ruta }}"/>
+                    <figcaption>
+                        <div class="credito">{{ imagenes[0].creditos }}</div>
+                    </figcaption>
+                </figure>
+            </div>
+                
+            <div class="mitad"> 
+                <figure>
+                    <img src="{{ imagenes[1].ruta }}"/>
+                    <figcaption>
+                        <div class="credito">{{ imagenes[1].creditos }}</div>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="seccion_comentarios">
+            <div class = "desplegable" id="desplegable">
+                <div id = "comentarios">
+                    <div class="comentario">
+                        <p class="autor">Autor1, <span class="fecha_hora">06/03/2020 a las 20:56</span></p>
+                        <p>Cuándo salen las entradas a la venta?</p>
+                    </div>
+
+                    <div class="comentario">
+                        <p class="autor">Autor2, <span class="fecha_hora">07/03/2020 a las 18:09</span></p>
+                        <p>Tengo muchas ganas</p>
+                    </div>
+                </div>
+
+                <div class="formulario_comentario">
+                    <p class="info_usr">Deja aquí tu comentario</p>
+                    <form name="form_comentario" id="caja_comentarios">
+                            <div class="info_usr">Nombre:<input type="text" name="nombre" /></div>
+                            <div class="info_usr">E-mail:<input type="text" name="email" /></div>
+                            <div class="info_usr">Tu comentario:
+                                <textarea name="message" class="info_usr" id="com"  oninput="compruebaProhibidas()" placeholder="Escribe tu comentario..."></textarea>
+                            </div>
+                            <div class="info_usr"><button class="boton_enviar" onclick="return validateForm();">Enviar</button></div>
+                    </form>
+                </div>
+            </div>
+            <button class="boton_comentario" onclick="mostrarComentarios()">Comentarios</button>
+        </div>
+    </article>
+{% endblock %}
