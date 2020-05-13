@@ -1,0 +1,39 @@
+{% extends "login.html" %}
+
+{% block central %}
+<div class="form-centrado">
+    
+    <div class="titulo-info">
+        <h2>¿Aún no perteneces a nuestra comunidad?</h2>
+    </div>
+
+    <div class="formulario-login">
+        
+        <div class="titulo">
+            <h2>Regístrate</h2>
+        </div>
+
+        <div class="texto">
+            <p>Introduce tu nombre de usuario, tu e-mail y tu contraseña</p>
+        </div>
+        
+        <div>
+            <form name="form_registro" action="/scripts/register.php" onsubmit=" return validaRegistro()" method="post">
+                <div class="info_usr">Nick:<input type="text" class="input_usr" name="nick" /></div>
+                <div class="info_usr">E-mail:<input type="text" class="input_usr" name="email" /></div>
+                <div class="info_usr">Password: <input type="password" class="input_usr" name="contraseña"/></div>
+                <div class="info_usr"><input class="boton_enviar" class="input_usr" name="submit" type="submit" value="Entrar"></div>
+            </form>
+            {% if error %}
+            <div class="error">
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+        </div>
+
+        
+
+    </div>
+  
+</div>
+{% endblock %}

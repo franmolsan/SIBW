@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <link rel="stylesheet" type="text/css" href= {% block estilo %}{% endblock %}/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{% block scritps %}{% endblock %}"></script>
+<title>SIBW {% block titulo %}{% endblock %}</title>
+</head>
+<body class="cuerpo">
+
+<header>
+
+    <div class="titulo">
+        <a href="/"><img class="logo" src="/img/logo.png" alt="Logo"/></a>
+        <h1 class="t1"><a href="/">Conciertos Granada</a></h1>
+    </div>
+
+    {% block enlaces_arriba %}
+    <section class="flex-container enlaces"> 
+
+        {% if not usuario %} <!-- si el usuario no ha iniciado sesión, mostrar registrar e iniciar sesión-->
+        <div class="enlace"> 
+            <a href="/login">Inicia sesión</a>
+        </div>
+        <div class="enlace">
+            <a href="/register">Regístrate</a>
+        </div>
+
+        {% else %} <!-- si el usuario sí ha iniciado sesión, mostrar panel de control y logout (salir)-->
+        <div class="enlace">
+            <a href="/panel">Panel de control</a>
+        </div>
+        <div class="enlace">
+            <a href="../scripts/logout.php">Logout</a>
+        </div>
+        {% endif %}
+    </section>
+    {% endblock %}
+</header>
+
+<section class="flex-container">
+    
+    {% block enlaces_lateral %}
+    <nav class="enlaces">
+        <ul class="enlace">
+            <li><a href="#">Próximos conciertos</a></li>
+            <li><a href="#">Buscar concierto</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Grupos</a></li>
+            <li><a href="#">Festivales</a></li>
+            <li><a href="#">Calendario</a></li>
+        </ul>
+    </nav>
+    {% endblock %}
+    
+    <main>
+        {% block central %}
+        <p> parte central </p>
+        {% endblock %}
+    </main>
+</section>
+
+<footer>
+
+    <section class="flex-container enlaces"> 
+        <div class="enlace"> 
+            <a href="#">About us</a>
+        </div>
+        <div class="enlace">
+            <a href="#">Contact</a>
+        </div>
+        <div class="enlace">
+            &copy; fjms
+        </div>
+    </section>
+
+</footer>
+
+
+</body>
+</html> 

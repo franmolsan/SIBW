@@ -1,0 +1,59 @@
+{% extends "padre.html" %}
+
+{% block estilo %} 
+    "/styles/estilo.css"
+{% endblock %}
+
+{% block titulo %}
+    Login
+{% endblock %}
+
+{% block scritps %}
+    /scripts/scripts.js
+{% endblock %}
+
+{% block enlaces_arriba %}
+<section class="flex-container enlaces"> 
+    <div class="enlace"> 
+        <a href="/">Volver</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block enlaces_lateral %}
+{% endblock %}
+
+{% block central %}
+<div class="form-centrado">
+    
+    <div class="titulo-info">
+        <h2>¡Bienvenido de nuevo!</h2>
+    </div>
+
+    <div class="formulario-login">
+        
+        <div class="titulo">
+            <h2>Inicia sesión</h2>
+        </div>
+
+        <div class="texto">
+            <p>Introduce tu nombre de usuario y contraseña para iniciar sesión</p>
+        </div>
+        
+        <div>
+            <form name="form_login"action="/scripts/login.php" onsubmit=" return validaLogin()" method="post">
+                <div class="info_usr">Nick:<input type="text" class="input_usr" name="nick" /></div>
+                <div class="info_usr">Password: <input type="password" class="input_usr" name="contraseña"/></div>
+                <div class="info_usr"><input class="boton_enviar" class="input_usr" name="submit" type="submit" value="Entrar"></div>
+            </form>
+            {% if error %}
+            <div class="error">
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+        </div>
+        
+    </div>
+  
+</div>
+{% endblock %}

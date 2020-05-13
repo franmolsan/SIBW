@@ -1,0 +1,406 @@
+/*****************************************************************************/
+/* Francisco José Molina Sánchez                                             */
+/* P2, SIBW                                                                  */
+/* 2019-2020                                                                 */
+/*****************************************************************************/
+
+/*****************************************************************************/
+/* Cuerpo: afecta a todo el documento                                        */
+/*****************************************************************************/
+.cuerpo {
+  /* eliminar los espacios "por defecto" que hay alrededor */
+  margin: 0;
+  font-family: "Arial", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #05386B;
+
+  /* tamaño de letra general */
+  font-size: 20px; 
+}
+
+/* Tamaño del titulo */
+h1 {
+  font-size: 45px;
+}
+
+/* Estilo para el header */
+header {
+  color: #8EE4AF;
+  padding: 30px;
+  text-align: center;
+}
+/* Flexbox para el logo y el titulo */
+.titulo {
+  color: black;
+  display: -webkit-flex;
+  display: flex;
+}
+
+
+/* Centrar el titulo de la pagina */
+.t1 {
+  margin: auto;
+  padding-bottom: 10px;
+}
+
+/* Posicion del logo */
+.logo { 
+  justify-content: left;
+  align-self: start;
+}
+
+/* Contenedor para las flexboxes */
+.flex-container {
+    justify-content: center;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.enlaces{
+  justify-content: center;
+}
+
+/* Estilo de la barra de navegación */
+nav {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    background: #5CDB95 ;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+  padding: 20px 0;
+}
+
+nav a {
+  color: #05386B;
+}
+
+/* Estilo para los enlaces */
+.enlace {
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 10px;
+}
+
+
+/* Estilo para el articulo (en evento)  */
+article {
+    background-color: #379683;
+    padding: 20px;
+    color: black;
+}
+
+.texto {
+  color: white;
+}
+
+.error{
+  color: red;
+}
+  
+.correcto{
+  color: #05386B;
+}
+
+/* Estilo del pie */
+footer {
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Formato de los enlaces */
+a {
+  /* para eliminar el subrayado de los enlaces */
+  text-decoration: none;
+  color: #8EE4AF;
+}
+  
+a:hover, a:active {
+    color: white;
+}
+
+/* Flexbox para las imágenes */
+
+.fila {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 4px;
+  justify-content: center;
+  background-color: #8EE4AF;
+  color: black;
+}
+
+/* Crear columnas de imagenes */
+
+/* Para portada */
+.col {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.col img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Para evento */
+.mitad {
+  flex: 33%;
+  max-width: 33%;
+  padding: 0 4px;
+}
+
+.mitad img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Texto de las imágenes */
+figcaption {
+  color: black;
+  text-align: center;
+}
+
+/* Crédito de las imágenes */
+.credito {
+ font-size: 10px;
+}
+
+/* para los comentarios */
+.seccion_comentarios {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.boton_comentario {
+  position: fixed;
+  bottom: 0%;
+  right: 0%;
+  background-color:#318af2;
+  border-radius:3px;
+  border:1px solid #31b1f2;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:17px;
+  padding: 5px 10px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #3164f2;
+  transition-duration: 0.3s;
+}
+.boton_comentario:hover {
+  background-color:#3164f2;
+}
+
+.boton_enviar {
+  background-color:#5CDB95;
+  border-radius:3px;
+  border:1px solid #379683;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  font-size:17px;
+  padding: 5px 10px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #379683;
+  transition-duration: 0.3s;
+}
+.boton_enviar:hover {
+  background-color:#05386B;
+
+}
+/* para el desplegable de comentario */
+.desplegable {
+  overflow: auto;
+  height: 62%;
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 5%;
+  right: 0%;
+  padding: 3%;
+  border-bottom-left-radius: 2%;
+  border-top-left-radius: 2%;
+  opacity: 0.9;
+  justify-content: center;
+  display: none;
+  flex-grow: 0;
+}
+
+.info_usr {
+  text-align:center;
+  margin:5px;
+}
+
+
+.input_usr {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.comentario {
+  padding: 0% 2%;
+  margin: 3% 0%;
+  border:1px solid #379683;
+  border-radius: 4px;
+}
+
+.formulario_comentario {
+  border:1px dashed #363a39;
+  border-radius: 4px;
+  padding: 0% 2%;
+  margin: 3% 0%;
+}
+
+.autor {
+  font-weight: bold;
+}
+
+.fecha_hora {
+  font-style: italic;
+  font-size: 15px;
+}
+
+.formulario-login {
+  background-color: #379683;
+  padding: 5%;
+  color: white;
+}
+
+.titulo-info {
+  padding: 5%;
+  justify-content: center;
+  background-color: #8EE4AF;
+  color: black;
+}
+
+.form-centrado {
+  flex-grow: 0;
+  justify-content: center;
+}
+
+.caja {
+  border: 1px solid;
+  padding: 5%;
+  margin: 1%;
+  border-radius: 5px;
+}
+
+
+
+/* Para los botones sociales */
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* efecto hover (pasar raton por encima) */
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Diferentes estilos para FB, TW, YT e impresión */
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-print {
+  background: black;
+  color: white;
+}
+
+
+
+/*****************************************************************************/
+/* Para que el layout sea responsive                                         */
+/*****************************************************************************/
+
+/* para que el grid de imágenes se vaya reduciendo */
+@media all and (max-width: 1100px) {
+
+  .col {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    flex: 33%;
+    max-width: 33%;
+  }
+}
+
+/* para que el grid de imágenes se vaya reduciendo */
+@media all and (max-width: 950px) {
+
+  .col {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* para que el grid de imágenes se vaya reduciendo */
+@media all and (max-width: 700px) {
+
+  .col, .mitad , .seccion_comentarios{
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+
+  .desplegable {
+    align-self: center;
+    position: relative;
+    border-bottom-left-radius: 0%;
+    border-top-left-radius: 0%;
+  }
+
+  .boton_comentario {
+    align-self: center;
+    position: relative;
+    width: 120px;
+   }
+}
+
+/* para que se "apilen" la cabecera, los elementos auxiliares y el pie */
+@media all and (max-width: 600px) {
+  
+  .titulo, section, .seccion_comentarios {
+    text-align: center;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+
+}

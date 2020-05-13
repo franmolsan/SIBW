@@ -1,0 +1,71 @@
+{% extends "login.html" %}
+
+{% block central %}
+<div class="form-centrado">
+    
+    <div class="titulo-info">
+        <h2>Panel de control</h2>
+        <p>Aquí puedes cambiar tus datos.</p>
+    </div>
+
+    <div class="formulario-login">
+        
+        <div class="titulo">
+            {% if usuario.rol == 'super' %}
+            <h3>Eres superusuario</h3>
+            {% elseif usuario.rol == 'gestor' %}
+            <h3>Eres un usuario gestor</h3>
+            {% elseif usuario.rol == 'moderador' %}
+            <h3>Eres un usuario moderador</h3>
+            {% elseif usuario.rol == 'estandar' %}
+            <h3>Eres un usuario estándar</h3>
+            {% endif %}
+        </div>
+
+        <div class="titulo">
+            <p class="caja">Tu nombre de usuario es <strong>{{ usuario.nick }}</strong></p>
+            <p class="caja">Tu email es  <strong>{{ usuario.email }}</strong></p>
+        </div>
+       
+        <div class="texto">
+            <h3>¿Quieres cambiar tus datos?</h3>
+            {% if error %}
+            <div class="error">
+                <p>{{ error }}</p>
+            </div>
+            {% elseif mensaje %}
+            <div class="correcto">
+                <p>{{ mensaje }}</p>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="caja">
+            <p>Cambia tu <strong>nombre de usuario</strong> en el siguiente formulario:</p>
+            <form name="cambioNombre" action="/scripts/changeUsername.php" onsubmit=" return validaCambioNombre()" method="post">
+                <div class="info_usr">Nuevo nombre de usuario:<input type="text" class="input_usr" name="nick" /></div>
+                <div class="info_usr"><input class="boton_enviar" class="input_usr" name="submit" type="submit" value="Cambiar"></div>
+            </form>
+
+        </div>
+
+        <div class="caja">
+            <p>Cambia tu <strong>email</strong> en el siguiente formulario:</p>
+            <form name="cambioEmail" action="/scripts/changeUserEmail.php" onsubmit=" return validaCambioEmail()" method="post">
+                <div class="info_usr">Nuevo email:<input type="text" class="input_usr" name="email" /></div>
+                <div class="info_usr"><input class="boton_enviar" class="input_usr" name="submit" type="submit" value="Cambiar"></div>
+            </form>
+        </div>
+
+        <div class="caja">
+            <p>Cambia tu <strong>contraseña</strong> en el siguiente formulario:</p>
+            <form name="cambioPass" action="/scripts/changeUserPass.php" onsubmit=" return validaCambioPass()" method="post">
+                <div class="info_usr">Nueva contraseña:<input type="password" class="input_usr" name="pass" /></div>
+                <div class="info_usr"><input class="boton_enviar" class="input_usr" name="submit" type="submit" value="Cambiar"></div>
+            </form>
+        </div>
+
+    </div>
+  
+</div>
+{% endblock %}
