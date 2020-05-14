@@ -201,3 +201,13 @@ function getProhibidas(){
   xmlhttp.send();
 
 }
+
+function mostrarEdicion() 
+{
+  var x = document.getElementById("edicion");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}

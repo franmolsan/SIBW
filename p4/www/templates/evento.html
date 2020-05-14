@@ -21,10 +21,10 @@
                 <h4>{{ evento['fecha'] }}</h4>
                 <h4>{{ evento['hora'] }}</h4>
                 <h4>Precio de la entrada: {{ evento['precio'] }} €</h4>
-                <a href="#" class="fa fa-facebook"></a>
-                <a href="#" class="fa fa-twitter"></a>
-                <a href="#" class="fa fa-youtube"></a>
-                <a href="/evento_imprimir/{{evento['id']}}" class="fa fa-print"></a>
+                <a href="#" class="fa fa-medio fa-facebook"></a>
+                <a href="#" class="fa fa-medio fa-twitter"></a>
+                <a href="#" class="fa fa-medio fa-youtube"></a>
+                <a href="/evento_imprimir/{{evento['id']}}" class="fa fa-medio fa-print"></a>
             </div> 
         </div>
         
@@ -57,12 +57,39 @@
         <div class="seccion_comentarios">
             <div class = "desplegable" id="desplegable">
                 <div id = "comentarios">
+                    {% if comentarios %}
                     {% for i in range(1,comentarios|length) %}
                     <div class="comentario">
                         <p class="autor">{{comentarios[i-1].nombre}}, <span class="fecha_hora">{{comentarios[i-1].fecha_hora}}</span></p>
                         <p>{{comentarios[i-1].texto|replace({ '\\r\\n': '<br />' })|raw  }}</p> <!-- replace para cambiar los \r\n por <br/>, raw para que los <br/> se vean como saltos de linea. nl2br no funcionaba -->
+                        
+                        {% if usuario.rol == 'moderador' or usuario.rol == 'super' %}
+                        <div class="botones_edicion">
+                            <div class="boton_edicion">
+                                <button name="editar" onclick="mostrarEdicion()" class="fa fa-small fa-edit"/>
+                            </div>
+                            <div class="boton_edicion">
+                                <form name="borrar_comentario" id="borrar_comentario" action="/scripts/borrarComentario.php" method="POST">
+                                    <input type="hidden" id="idCom" name="idCom" value="{{comentarios[i-1].idComentario}}">
+                                    <button name="borrar" type="submit" class="fa fa-small fa-trash"/>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="formulario_comentario edicion_comentario" id="edicion" >
+                            <p class="info_usr">Modifica el comentario</p>
+                            <form name="editar_comentario" id="editar_comentario" action="/scripts/editarComentario.php" method="POST">
+                                <input type="hidden" id="idCom" name="idCom" value="{{comentarios[i-1].idComentario}}">
+                                <div class="info_usr">
+                                    <textarea class="input_usr" name="edicion" placeholder="Modifica el comentario..." >{{comentarios[i-1].texto|replace({ '\\r\\n': '\n' })}}</textarea>
+                                </div>
+                                <div class="info_usr"><input class="boton_enviar" name="submit" type="submit" value="Modificar"/></div>
+                            </form>
+                        </div>
+                        {% endif %}
+
                     </div>
                     {% endfor %}
+                    {% endif %}
                 </div>
                 
                 {% if usuario %} <!-- si el usuario está logeado-->
@@ -73,7 +100,7 @@
                             <div class="info_usr">
                                 <textarea id="com" name="texto_comentario" class="input_usr" oninput="compruebaProhibidas()" placeholder="Escribe tu comentario..." ></textarea>
                             </div>
-                            <div class="info_usr"><input class="boton_enviar" name="submit" type="submit" value="Enviar"></div>
+                            <div class="info_usr"><input class="boton_enviar" name="submit" type="submit" value="Enviar"/></div>
                     </form>
                 </div>
 

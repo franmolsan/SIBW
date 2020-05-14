@@ -26,7 +26,6 @@
             echo $twig->render('panel.html', ['mensaje' => $mensaje,'usuario' => $sesionUsuario]);
             exit();
         }
-        
   }
   
 ?>

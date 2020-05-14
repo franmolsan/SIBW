@@ -74,7 +74,7 @@
 
   function getComentarios ($idEv){
     global $mysqli;
-    $res = $mysqli->prepare("SELECT nombre, fecha_hora, texto FROM comentarios WHERE idEvento = ?");
+    $res = $mysqli->prepare("SELECT idComentario, nombre, fecha_hora, texto FROM comentarios WHERE idEvento = ?");
     $res->bind_param("i", $idEv);
     $res->execute();
     $res = $res->get_result();
@@ -82,7 +82,7 @@
     $comentarios = [];
 
     while ($row = $res->fetch_assoc()) { 
-      array_push($comentarios,array('nombre' => $row['nombre'], 'fecha_hora' => $row['fecha_hora'], 'texto' => $row['texto']));
+      array_push($comentarios,array('idComentario' => $row['idComentario'], 'nombre' => $row['nombre'], 'fecha_hora' => $row['fecha_hora'], 'texto' => $row['texto']));
     }
 
     return $comentarios;
@@ -94,6 +94,22 @@
     $fecha_hora = date('Y-m-d H:i:s');
     $res = $mysqli->prepare("INSERT INTO comentarios (idEvento, nombre, email, texto) VALUES (?,?,?,?)");
     $res->bind_param("isss", $idEv, $nom, $mail, $com);
+    $res->execute();
+    $res = $res->get_result();
+  }
+
+  function borrarComentario($idComentario){
+    global $mysqli;
+    $res = $mysqli->prepare("DELETE FROM comentarios WHERE idComentario=?");
+    $res->bind_param("i", $idComentario);
+    $res->execute();
+    $res = $res->get_result();
+  }
+
+  function editarComentario($idComentario, $texto){
+    global $mysqli;
+    $res = $mysqli->prepare("UPDATE comentarios SET texto=? WHERE idComentario=?");
+    $res->bind_param("si", $texto, $idComentario);
     $res->execute();
     $res = $res->get_result();
   }

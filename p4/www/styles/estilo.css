@@ -242,6 +242,7 @@ figcaption {
 
 .info_usr {
   text-align:center;
+  align-items: center;
   margin:5px;
 }
 
@@ -303,15 +304,48 @@ figcaption {
   border-radius: 5px;
 }
 
+.botones_edicion {
+  display: flex;
+  margin: 3%;
+}
+
+.boton_edicion {
+  flex: 50%;
+  text-align: center;
+}
+
+.edicion_comentario {
+  display: none;
+  text-align: center;
+}
 
 
 /* Para los botones sociales */
 .fa {
+  text-align: center;
+  text-decoration: none;
+}
+
+.fa-medio {
   padding: 20px;
   font-size: 30px;
   width: 50px;
-  text-align: center;
-  text-decoration: none;
+}
+
+.fa-small {
+  padding: 5%;
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+.fa-edit{
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-trash {
+  background: #bb0000;
+  color: white;
 }
 
 /* efecto hover (pasar raton por encima) */
